@@ -22,6 +22,16 @@ class DrawerMenu extends StatelessWidget {
             onTap: () => Navigator.pushReplacementNamed(context, Routes.home),
           ),
           ListTile(
+            leading: const Icon(Icons.pets),
+            title: const Text('My Herd'), // <— NEW
+            onTap: () => Navigator.pushReplacementNamed(context, Routes.herd),
+          ),
+          ListTile(
+            leading: const Icon(Icons.offline_bolt),
+            title: const Text('Offline classifier'),
+            onTap: () => Navigator.pushReplacementNamed(context, Routes.offline),
+          ),
+          ListTile(
             leading: const Icon(Icons.biotech),
             title: const Text('Crossbreed suggester'),
             onTap: () => Navigator.pushReplacementNamed(context, Routes.crossbreed),

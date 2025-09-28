@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/register_screen.dart';
 import 'screens/dashboard_screen.dart';
@@ -11,6 +12,8 @@ import 'screens/settings_screen.dart';
 // NEW screens:
 import 'screens/vaccination_log_screen.dart';
 import 'screens/dairy_marketplace_screen.dart';
+import 'screens/offline_classifier_screen.dart';
+import 'screens/herd_screen.dart'; // <— NEW
 
 import 'services/auth_service.dart';
 
@@ -27,6 +30,8 @@ class Routes {
   // NEW:
   static const vaccLog = '/vaccination-log';
   static const dairyMarket = '/dairy-market';
+  static const offline = '/offline';
+  static const herd = '/herd'; // <— NEW
 }
 
 class AppRouter {
@@ -39,6 +44,7 @@ class AppRouter {
       return MaterialPageRoute(builder: (_) => const DashboardScreen());
     }
 
+    // If not logged in, force to login/register
     if (!AuthService.isLoggedIn &&
         name != Routes.login &&
         name != Routes.register) {
@@ -68,6 +74,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const VaccinationLogScreen());
       case Routes.dairyMarket:
         return MaterialPageRoute(builder: (_) => const DairyMarketplaceScreen());
+      case Routes.offline:
+        return MaterialPageRoute(builder: (_) => const OfflineClassifierScreen());
+      case Routes.herd: // <— NEW
+        return MaterialPageRoute(builder: (_) => const HerdScreen());
 
       default:
         return MaterialPageRoute(builder: (_) => const DashboardScreen());
